@@ -1,13 +1,3 @@
-// const {Client} = require("@googlemaps/google-maps-services-js");
-
-// const client = new Client({})
-
-// client.directions({
-//     params: {
-//         key: "AIzaSyDpPFnwbANv2SiAfLBgji1dM3jpw_E0MjM"
-//     }
-// })
-
 import fetch from 'node-fetch'
 import {key} from './constant.js'
 
