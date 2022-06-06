@@ -9,8 +9,10 @@
 // })
 
 import fetch from 'node-fetch'
+import {key} from './constant.js'
+
 const callGoogle = () => {
-    let key = "AIzaSyDpPFnwbANv2SiAfLBgji1dM3jpw_E0MjM"
+    console.log(key)
     fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=Oxley+Bizhub+2&destination=250B+Compassvale+Street&key=${key}&region=SG&waypoints=optimize:true|Seletar+Mall|Tampines+Mall`)
     .then(response => response.json())
     .then(data => {
@@ -18,3 +20,5 @@ const callGoogle = () => {
     })
 
 }
+
+callGoogle()
