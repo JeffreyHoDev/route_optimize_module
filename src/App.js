@@ -1,70 +1,41 @@
-import React from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import './App.css'
+import { useEffect, useState } from 'react'
+import MapContainer from './Map'
 import { key } from './constant'
+import ImportScript from './ImportScript.util'
 
-import CurrentLocation from './Map';
+const App = () => {
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
+  
+  const [google, setGoogle] = useState(null)
+  ImportScript(`https://maps.googleapis.com/maps/api/js?key=${key}`, setGoogle)
 
-export class MapContainer extends React.Component {
-
-  state = {
-    showingInfoWindow: false,  // Hides or shows the InfoWindow
-    activeMarker: {},          // Shows the active marker upon click
-    selectedPlace: {}          // Shows the InfoWindow to the selected place upon a marker
-  }
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
+  const initMap = (google) => {
+    // The location of Uluru
+    console.log(google)
+    const uluru = { lat: -25.344, lng: 131.031 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: uluru,
     });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
-  render() {
-    return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={
-          {
-            lat: 1.2884,
-            lng: 103.8233
-          }
-        }
-      >
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Kenyatta International Convention Centre'}
-        />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-
-      </Map>
-    );
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
   }
+
+  useEffect(() => {
+    
+    initMap(window.google)
+  },[])
+
+  return (
+    <div className="App">
+      
+    </div>
+  )
 }
 
-export default GoogleApiWrapper({
-  apiKey: key
-})(MapContainer);
+export default App
