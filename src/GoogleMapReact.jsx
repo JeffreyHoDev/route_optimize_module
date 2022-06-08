@@ -37,7 +37,7 @@ const GoogleMapContainer = ({center, zoom}) => {
             }
 
             directionService.route(
-                arrayofplaces,
+            arrayofplaces,
                 (result, status) => {
                     if (status === mapsObj.DirectionsStatus.OK) {
                         directionsRenderer.setDirections(result);
