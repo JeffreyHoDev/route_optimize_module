@@ -41,9 +41,9 @@ const GoogleMapContainer = ({center, zoom}) => {
                 (result, status) => {
                     if (status === mapsObj.DirectionsStatus.OK) {
                         directionsRenderer.setDirections(result);
-                      } else {
-                        console.error(`error fetching directions ${result}`);
-                      }
+                    } else {
+                    console.error(`error fetching directions ${result}`);
+                    }
                 }
             )
         }
