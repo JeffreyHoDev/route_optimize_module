@@ -2,10 +2,9 @@
 
 # dependencies
 /node_modules
-/src/constant.js
 /.pnp
 .pnp.js
-
+/src/constant.js
 # testing
 /coverage
 
