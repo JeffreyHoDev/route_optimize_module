@@ -1,11 +1,73 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import GoogleMapContainer from './GoogleMapReact'
+import GoogleMapContainer from './utils/GoogleMaps/GoogleMapReact'
 import Checkbox from './components/checkbox/checkbox.component'
 
 
+
 const App = () => {
+
+
+  const [mapObj, setMapObj] = useState(null)
+  const [mapsObj, setMapsObj ] = useState(null)
+  const [tempRenderer, setTempRenderer] = useState(null)
+  
+
+  const processData = () => {
+
+      const updatedWaypointsToQuery = allStatesofCheckbox.map((state,index) => {
+        if(state){
+          return {
+            "location": placesName[index].name
+          }
+        }
+      })
+  
+      const cleanedWayPoints = updatedWaypointsToQuery.filter(item => item)
+  
+      const ToQueryDirection = {
+        "origin": origin,
+        "destination": destination,
+        "waypoints": cleanedWayPoints,
+      }
+
+      if(mapObj !== null && mapsObj !== null && ToQueryDirection !== null ) {
+          
+
+          const directionService = new mapsObj.DirectionsService()
+          const directionsRenderer = new mapsObj.DirectionsRenderer()
+          if(tempRenderer !== null){
+              tempRenderer.setMap(null)
+              setTempRenderer(directionsRenderer)
+          }else {
+              setTempRenderer(directionsRenderer)
+
+          }
+
+          directionsRenderer.setMap(mapObj)
+
+          ToQueryDirection.travelMode = mapsObj.TravelMode.DRIVING
+  
+          directionService.route(
+              ToQueryDirection,
+              (result, status) => {
+                  console.log(result)
+                  if (status === mapsObj.DirectionsStatus.OK) {
+                      
+                      directionsRenderer.setDirections(result);
+                      
+                      
+                  } else {
+                      console.error(`error fetching directions ${result}`);
+                  }
+              }
+          )
+
+      }
+  
+
+  }
 
   const defaultProps = {
     center: {lat: 1.290270, lng: 103.851959}, 
@@ -15,7 +77,7 @@ const App = () => {
   const [allStatesofCheckbox, setAllStatesofCheckbox] = useState(new Array(4).fill(false))
   const [origin, setOrigin] = useState("")
   const [destination, setDestination] = useState("")
-  const [queryData, setQueryData] = useState(null)
+
 
   
   const placesName = [
@@ -33,25 +95,7 @@ const App = () => {
     },
   ]
 
-  const processData = () => {
-    const updatedWaypointsToQuery = allStatesofCheckbox.map((state,index) => {
-      if(state){
-        return {
-          "location": placesName[index].name
-        }
-      }
-    })
 
-    const cleanedWayPoints = updatedWaypointsToQuery.filter(item => item)
-
-    const ToQueryDirection = {
-      "origin": origin,
-      "destination": destination,
-      "waypoints": cleanedWayPoints,
-    }
-
-    setQueryData(ToQueryDirection)
-  }
 
   const handleOnChange = (position) => {
     const updatedStatesofCheckbox = allStatesofCheckbox.map((item, index) => {
@@ -63,14 +107,19 @@ const App = () => {
   const { center, zoom } = defaultProps
 
 
-  useEffect(() => {
-    console.log(queryData)
-  }, [queryData])
-
   return (
     <div className="App">
 
-      <GoogleMapContainer center={center} zoom={zoom} queryData={queryData} />
+      <GoogleMapContainer placesName={placesName} 
+        center={center} 
+        zoom={zoom} 
+        allStatesofCheckbox={allStatesofCheckbox} 
+        origin={origin} 
+        destination={destination}
+        setMapObj={setMapObj}
+        setMapsObj={setMapsObj}
+
+        />
       <div className='inputs-container'>
         <div className='checkbox-container'>
         {
