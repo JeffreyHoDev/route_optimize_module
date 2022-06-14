@@ -1,4 +1,4 @@
-import TableComponent from '../../components/table/table.component'
+
 import CustomTableComponent from '../../components/table/customTable.component'
 import { useMemo } from 'react'
 

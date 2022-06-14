@@ -1,9 +1,7 @@
-
-
-const PassengerManagementPage = () => {
+const VehicleManagementPage = () => {
     return (
-        <div className="usermanagement-page-container">
-            <h1>Passenger Management Page</h1>
+        <div className="vehicle-management-page-container">
+            <h1>Vehicle Management Page</h1>
             {/* <TableComponent columns={columns} data={data}/> */}
             <div className="custom-table-component">
                 <input type="text" placeholder="Search Name"></input>
@@ -11,10 +9,7 @@ const PassengerManagementPage = () => {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Passenger Name</th>
-                            <th>Related User</th>
-                            <th>Pickup Address</th>
-                            <th>Postal Code</th>
+                            <th>Vehicle Plate</th>
                             <th>Register Date</th>
                             <th>Action</th>
                         </tr>
@@ -22,11 +17,8 @@ const PassengerManagementPage = () => {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Kid A</td>
-                            <td>AdminGor</td>
-                            <td>250B Somewhere</td>
-                            <td>123456</td>
-                            <td>13th June 2022</td>
+                            <td>ABC1234D</td>
+                            <td>14th June 2022</td>
                             <td>
                                 <button>Edit</button>
                                 <button>Delete</button>
@@ -39,4 +31,4 @@ const PassengerManagementPage = () => {
     )
 }
 
-export default PassengerManagementPage
+export default VehicleManagementPage

@@ -75,6 +75,7 @@ const SetRoutePage = () => {
   const [allStatesofCheckbox, setAllStatesofCheckbox] = useState(new Array(4).fill(false))
   const [origin, setOrigin] = useState("")
   const [destination, setDestination] = useState("")
+  const [assignedVehicle, setAssignedVehicle] = useState("")
 
 
   
@@ -131,6 +132,12 @@ const SetRoutePage = () => {
                 <div className='destination-input'>
                     <label htmlFor='destination'>Destination: </label>
                     <input type="text" name="destination" onChange={(event) => setDestination(event.target.value)} />
+                </div>
+                <div className='vehicle-input'>
+                    <label htmlFor='assignvehicle'>Assign Vehicle: </label>
+                    <select type="text" name="assignvehicle" onChange={(event) => setAssignedVehicle(event.target.value)} >
+                      <option>Bus A</option>
+                    </select>
                 </div>
                 </div>
                 <button onClick={processData}>Query</button>

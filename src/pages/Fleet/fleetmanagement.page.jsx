@@ -1,9 +1,9 @@
+import Button from '@material-ui/core/Button'
 
-
-const PassengerManagementPage = () => {
+const FleetManagementPage = () => {
     return (
-        <div className="usermanagement-page-container">
-            <h1>Passenger Management Page</h1>
+        <div className="fleet-management-page-container">
+            <h1>Fleet Management Page</h1>
             {/* <TableComponent columns={columns} data={data}/> */}
             <div className="custom-table-component">
                 <input type="text" placeholder="Search Name"></input>
@@ -11,32 +11,28 @@ const PassengerManagementPage = () => {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Passenger Name</th>
-                            <th>Related User</th>
-                            <th>Pickup Address</th>
-                            <th>Postal Code</th>
+                            <th>Fleet Name</th>
                             <th>Register Date</th>
+                            <th>Created By</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Kid A</td>
-                            <td>AdminGor</td>
-                            <td>250B Somewhere</td>
-                            <td>123456</td>
-                            <td>13th June 2022</td>
+                            <td>ABC Group</td>
+                            <td>14th June 2022</td>
+                            <td>adminGor</td>
                             <td>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <Button size="small" variant="contained" color="primary">Edit</Button>
+                                <Button size="small" variant="contained" color="secondary">Delete</Button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>        
     )
 }
 
-export default PassengerManagementPage
+export default FleetManagementPage
