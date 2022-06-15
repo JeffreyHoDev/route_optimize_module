@@ -21,10 +21,10 @@ const App = () => {
       <AddUserComponent /> */}
       {/* <PassengerManagementPage />
       <AddPassengerComponent /> */}
-      <VehicleManagementPage />
-      <AddVehicleComponent />
-      {/* <FleetManagementPage />
-      <AddFleetComponent /> */}
+      {/* <VehicleManagementPage />
+      <AddVehicleComponent /> */}
+      <FleetManagementPage />
+      <AddFleetComponent />
     </div>
   )
 }
