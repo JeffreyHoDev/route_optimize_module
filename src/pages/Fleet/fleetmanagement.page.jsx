@@ -1,4 +1,3 @@
-
 import CustomTableComponent from '../../components/table/customTable.component'
 
 const FleetManagementPage = () => {
@@ -24,7 +23,7 @@ const FleetManagementPage = () => {
             <div className="custom-table-component">
                 <CustomTableComponent rows={rows} columns={columns}/>
             </div>
-        </div>        
+        </div>
     )
 }
 

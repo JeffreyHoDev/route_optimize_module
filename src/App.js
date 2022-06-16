@@ -12,19 +12,16 @@ import AddFleetComponent from './components/fleet/addFleet.component'
 
 const App = () => {
 
-
-
-
   return (
     <div className="App">
-      {/* <UserManagementPage />
-      <AddUserComponent /> */}
+      <UserManagementPage />
+      <AddUserComponent />
       {/* <PassengerManagementPage />
       <AddPassengerComponent /> */}
       {/* <VehicleManagementPage />
       <AddVehicleComponent /> */}
-      <FleetManagementPage />
-      <AddFleetComponent />
+      {/* <FleetManagementPage />
+      <AddFleetComponent /> */}
     </div>
   )
 }
