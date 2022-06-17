@@ -10,18 +10,21 @@ import VehicleManagementPage from './pages/VehicleManagement/vehiclemanagement.p
 import FleetManagementPage from './pages/Fleet/fleetmanagement.page'
 import AddFleetComponent from './components/fleet/addFleet.component'
 
+import SetRoutePage from './pages/SetRoute/SetRoutePage.page'
+
 const App = () => {
 
   return (
     <div className="App">
-      <UserManagementPage />
-      <AddUserComponent />
+      {/* <UserManagementPage />
+      <AddUserComponent /> */}
       {/* <PassengerManagementPage />
       <AddPassengerComponent /> */}
-      {/* <VehicleManagementPage />
-      <AddVehicleComponent /> */}
+      <VehicleManagementPage />
+      <AddVehicleComponent />
       {/* <FleetManagementPage />
       <AddFleetComponent /> */}
+      {/* <SetRoutePage /> */}
     </div>
   )
 }

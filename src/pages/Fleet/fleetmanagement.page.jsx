@@ -1,19 +1,26 @@
 import CustomTableComponent from '../../components/table/customTable.component'
+import { useState, useEffect } from 'react'
+
 
 const FleetManagementPage = () => {
+
+    const [ rows, setRows ] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9999/getFleets")
+        .then(response => response.json())
+        .then(data => {
+          setRows(data)
+        })
+        .catch(console.log)
+    }, [])
 
     const columns = [
         { field: 'id', headerName: 'ID' },
         { field: 'fleetname', headerName: 'Fleet', flex: 1 },
         { field: 'registerdate', headerName: 'Register Date', flex: 1 },
-        { field: 'createdby', headerName: 'Created By', flex: 1 },
       ];
     
-      const rows = [
-        { id: 1, fleetname: 'Snow', registerdate: '15th June 2022', createdby: 'AdminGor' },
-        { id: 2, fleetname: 'ABC Group', registerdate: '15th June 2022', createdby: 'AdminGor' },
-        { id: 3, fleetname: 'Research Group', registerdate: '15th June 2022', createdby: 'AdminGor' },
-      ];
 
 
     return (

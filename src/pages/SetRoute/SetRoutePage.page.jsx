@@ -145,3 +145,5 @@ const SetRoutePage = () => {
         </div>
     )
 }
+
+export default SetRoutePage

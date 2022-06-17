@@ -8,21 +8,19 @@ const UserManagementPage = () => {
     { field: 'id', headerName: 'ID' },
     { field: 'username', headerName: 'Username', flex: 1 },
     { field: 'displayname', headerName: 'Display Name', flex: 1 },
-    { field: 'email', headerName: 'Email', flex: 1 },
+    { field: 'registerdate', headerName: 'Register Date', flex: 1 },
+    { field: 'role', headerName: 'Role', flex: 1 },
   ];
 
-  const rows = [
-    { id: 1, username: 'Snow', email: 'snow@example.com' },
-    { id: 2, username: 'Dota', email: 'dota@example.com' },
-  ];
 
-  const [ displayUsers, setDisplayUsers ] = useState(null)
+  const [ rows, setRows ] = useState([])
 
-
-  const url = "http//localhost:9999/getUsers"
   useEffect(() => {
-    fetch(url)
-    .then(console.log)
+    fetch("http://localhost:9999/getUsers")
+    .then(response => response.json())
+    .then(data => {
+      setRows(data)
+    })
     .catch(console.log)
   }, [])
 

@@ -5,6 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Box from '@mui/material/Box';
+
+import './addVehicle.style.css'
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -16,21 +19,43 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 const AddVehicleComponent = () => {
+
+    const submitHandler = () => {
+
+    }
+
     const classes = useStyles()
     return (
         <div className="add-vehicle-component-container">
             <h1>Add a Vehicle</h1>
-            <FormControl className={classes.formControl}>
-                <TextField id="filled-basic" label="Vehicle Plate" variant="filled" type='text' name="vehiclename"></TextField>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="vehiclefleet">Vehicle Fleet: </InputLabel>
-                <Select type='text' labelId="vehiclefleet">
-                    <MenuItem>ABC Group</MenuItem>
-                </Select>
-            </FormControl>
-            <Button variant="contained" color="primary" type="button">Add</Button>
+            <Box
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1.5, width: '25ch' },
+                }}
+                autoComplete="off"
+                onSubmit={submitHandler}
+            >
+                <div className='add-vehicle-details'>
+                    <FormControl className={classes.formControl}>
+                        <TextField id="filled-basic" label="Vehicle Plate" variant="filled" type='text' name="vehiclename"></TextField>
+                    </FormControl>
+                </div>
+                <div className='add-vehicle-details'>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="vehiclefleet">Vehicle Fleet: </InputLabel>
+                        <Select type='text' labelId="vehiclefleet">
+                            <MenuItem>ABC Group</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+
+                <Button variant="contained" color="primary" type="submit">Add</Button>
+            </Box>
+            
         </div>        
     )
 }
