@@ -35,6 +35,13 @@ app.get('/getUsers', (req,res) => {
   .catch(err => res.json(err))
 })
 
+app.get('/getVehicles', (req,res) => {
+
+  knexQ.select().table('vehicles')
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
+
 app.get('/getPassengers', (req,res) => {
 
   knexQ.select().table('passengers')
@@ -83,6 +90,16 @@ app.post('/addPassenger', (req, res) => {
 app.post('/addFleet', (req, res) => {
 
   knexQ('fleets').insert(req.body)
+  .then(response => {
+    res.json(0)
+  })
+  .catch(err => res.json(err))
+  
+})
+
+app.post('/addVehicle', (req, res) => {
+
+  knexQ('vehicles').insert(req.body)
   .then(response => {
     res.json(0)
   })

@@ -1,23 +1,31 @@
 import CustomTableComponent from '../../components/table/customTable.component'
 
+import { useState, useEffect } from 'react'
+
 const VehicleManagementPage = () => {
 
+    const [ vehicles, setVehicles ] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:9999/getVehicles')
+        .then(response => response.json())
+        .then(data => setVehicles(data))
+        .catch(console.log)
+    }, [])
+
     const columns = [
-        { field: 'id', headerName: 'ID' },
-        { field: 'vehiclePlate', headerName: 'Vehicle Plate', width: 130 },
-        { field: 'registerDate', headerName: 'Register Date', width: 130, type: 'date' },
+        { field: 'id', headerName: 'ID', flex: 1 },
+        { field: 'vehicleplate', headerName: 'Vehicle Plate', flex: 1 },
+        { field: 'fleet', headerName: 'Fleet', flex: 1},
+        { field: 'registerdate', headerName: 'Register Date', flex: 2, type: 'date' },
     ];
 
-    const rows = [
-        { id: 1, vehiclePlate: 'Snow', registerDate: 'Jon' },
-    ];
 
     return (
         <div className="vehicle-management-page-container">
             <h1>Vehicle Management Page</h1>
-            {/* <TableComponent columns={columns} data={data}/> */}
             <div className="custom-table-component">
-                <CustomTableComponent rows={rows} columns={columns}/>
+                <CustomTableComponent rows={vehicles} columns={columns}/>
             </div>
         </div>
     )

@@ -12,19 +12,22 @@ import AddFleetComponent from './components/fleet/addFleet.component'
 
 import SetRoutePage from './pages/SetRoute/SetRoutePage.page'
 
+import NavigationBarComponent from './components/navigation-bar/Navigation-bar.component'
+
 const App = () => {
 
   return (
     <div className="App">
+      <NavigationBarComponent />
       {/* <UserManagementPage />
       <AddUserComponent /> */}
       {/* <PassengerManagementPage />
       <AddPassengerComponent /> */}
-      <VehicleManagementPage />
-      <AddVehicleComponent />
+      {/* <VehicleManagementPage />
+      <AddVehicleComponent /> */}
       {/* <FleetManagementPage />
       <AddFleetComponent /> */}
-      {/* <SetRoutePage /> */}
+      <SetRoutePage />
     </div>
   )
 }

@@ -22,6 +22,8 @@ const CustomTableComponent = ({ columns, rows }) => {
                 return item.username.toLowerCase().includes(event.target.value.toLowerCase())
             }else if(item.fleetname){
                 return item.fleetname.toLowerCase().includes(event.target.value.toLowerCase())
+            }else if(item.vehicleplate){
+                return item.vehicleplate.toLowerCase().includes(event.target.value.toLowerCase())
             }
         }))
     }

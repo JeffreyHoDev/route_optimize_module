@@ -1,0 +1,33 @@
+.setroute-page-container {
+    display: flex;
+    column-gap: 1.1rem;
+}
+
+.inputs-container {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.other-inputs-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: left;
+    row-gap: .5rem;
+    column-gap: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
