@@ -14,20 +14,23 @@ import SetRoutePage from './pages/SetRoute/SetRoutePage.page'
 
 import NavigationBarComponent from './components/navigation-bar/Navigation-bar.component'
 
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+
 const App = () => {
 
   return (
     <div className="App">
-      <NavigationBarComponent />
-      {/* <UserManagementPage />
-      <AddUserComponent /> */}
-      {/* <PassengerManagementPage />
-      <AddPassengerComponent /> */}
-      {/* <VehicleManagementPage />
-      <AddVehicleComponent /> */}
-      {/* <FleetManagementPage />
-      <AddFleetComponent /> */}
-      <SetRoutePage />
+    <NavigationBarComponent />
+      <Routes>
+          <Route path='/user-management' element={<UserManagementPage />} />
+          <Route path='/vehicle-management' element={<VehicleManagementPage/>}/>
+          <Route path='/passenger-management' element={<PassengerManagementPage />} />
+          <Route path='/fleet-management' element={<FleetManagementPage />} />
+          <Route path='/set-trip' element={<SetRoutePage />} />
+      </Routes>
     </div>
   )
 }

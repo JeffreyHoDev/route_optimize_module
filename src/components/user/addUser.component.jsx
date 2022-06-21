@@ -92,6 +92,7 @@ const AddUserComponent = () => {
 
     return (
     <div className="add-user-component-container">
+        
         <h1>Add a User</h1>
         <Box
             component="form"
@@ -108,7 +109,7 @@ const AddUserComponent = () => {
                 <TextField id="displayname" label="Display Name" name="displayname" variant="outlined" helperText="This will be the name appear to others" onChange={inputsHandler} required />
             </div>
             <div className="add-user-input-detail">
-                <FormControl className={classes.formControl} fullWidth>
+                {/* <FormControl className={classes.formControl} fullWidth>
                     <InputLabel id="role-label">Role</InputLabel>
                     <Select
                         labelId="role-label" 
@@ -117,12 +118,20 @@ const AddUserComponent = () => {
                         name="role"
                         onChange={inputsHandler}
                         value={newUserInformation.role}
+                        className="select-role"
+
                     >
                         <MenuItem value="Admin">Admin</MenuItem>
                         <MenuItem value="Scheduler">Scheduler</MenuItem>
                         <MenuItem value="Driver">Driver</MenuItem>
                     </Select>
-                </FormControl>
+                </FormControl> */}
+                <label htmlFor='role'>Role: </label>
+                <select name="role" onChange={inputsHandler} value={newUserInformation.role}>
+                    <option value="Admin">Admin</option>
+                    <option value="Scheduler">Scheduler</option>
+                    <option value="Driver">Driver</option>
+                </select>
             </div>
             <div className="add-user-input-detail">
                 <TextField id="password" name="password" label="Password" type="password" variant="outlined" onChange={inputsHandler} required/>

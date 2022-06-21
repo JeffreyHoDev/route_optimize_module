@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
+import { Link } from 'react-router-dom'
 
 const NavigationBarComponent = () => {
     return (
@@ -15,29 +16,39 @@ const NavigationBarComponent = () => {
                 <List>
                     <div className='navigation-bar-container'>
                         <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary="User Management" />
-                            </ListItemButton>
+                            <Link to="/user-management" style={{ textDecoration: 'none', color: 'white' }}>
+                                <ListItemButton>
+                                    <ListItemText primary="User Management"  />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary="Fleet Management" />
-                            </ListItemButton>
+                            <Link to="/fleet-management" style={{ textDecoration: 'none', color: 'white' }}>
+                                <ListItemButton>
+                                    <ListItemText primary="Fleet Management" />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary="Vehicle Management" />
-                            </ListItemButton>
+                            <Link to="/vehicle-management" style={{ textDecoration: 'none', color: 'white' }}>
+                                <ListItemButton>
+                                    <ListItemText primary="Vehicle Management" />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary="Passengers Management" />
-                            </ListItemButton>
+                            <Link to="/passenger-management" style={{ textDecoration: 'none', color: 'white' }}>
+                                <ListItemButton>
+                                    <ListItemText primary="Passengers Management" />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                         <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary="Set Trip" />
-                            </ListItemButton>
+                            <Link to="/set-trip" style={{ textDecoration: 'none', color: 'white' }}>
+                                <ListItemButton>
+                                    <ListItemText primary="Set Trip" />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                     </div>
                 </List>

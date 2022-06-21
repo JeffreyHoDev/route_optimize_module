@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import CustomTableComponent from '../../components/table/customTable.component'
+import AddUserComponent from '../../components/user/addUser.component';
 
 
 const UserManagementPage = () => {
@@ -27,9 +28,11 @@ const UserManagementPage = () => {
 
     return (
         <div className="usermanagement-page-container">
+        <div className='background'></div>
             <h1>User Management Page</h1>
             {/* <TableComponent columns={columns} data={data}/> */}
             <CustomTableComponent columns={columns} rows={rows} />
+            <AddUserComponent />
         </div>
     )
 }

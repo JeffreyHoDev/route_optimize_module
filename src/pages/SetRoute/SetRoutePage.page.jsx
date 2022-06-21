@@ -29,7 +29,7 @@ const SetRoutePage = () => {
     
   const [mapObj, setMapObj] = useState(null)
   const [mapsObj, setMapsObj ] = useState(null)
-  const [allStatesofCheckbox, setAllStatesofCheckbox] = useState(new Array(100).fill(false))
+  const [allStatesofCheckbox, setAllStatesofCheckbox] = useState(new Array(50).fill(false))
   const [tempRenderer, setTempRenderer] = useState(null)
   const [ buttonState, toggleButtonState ] = useState(false)
   const [ queryButtonState, toggleQueryButtonState ] = useState(false)
@@ -68,7 +68,7 @@ const SetRoutePage = () => {
 
   const processData = (event) => {
     event.preventDefault();
-    toggleQueryButtonState(!queryButtonState)
+    toggleQueryButtonState(true)
       const updatedWaypointsToQuery = allStatesofCheckbox.map((state,index) => {
         if(state){
           return {
@@ -160,6 +160,8 @@ const SetRoutePage = () => {
             <div className='inputs-container'>
                 <div className='checkbox-container'>
                   {
+
+                    passengers.length === 0 ? <h2>No passengers registered yet</h2> :
                     passengers.map((passenger, index) => {
                       return <CheckboxComponent 
                       key={`passenger-${index}`} 
@@ -198,7 +200,7 @@ const SetRoutePage = () => {
                   </div>
                   <div className='button-container'>
                     <Button variant="contained" disabled={queryButtonState} color="secondary" onClick={processData}>Query Route</Button>
-                    <Button variant="contained" disabled={buttonState} onSubmit={submitHandler} color="primary">Set the Plan</Button>
+                    <Button variant="contained" type="submit" disabled={buttonState} color="primary">Set the Plan</Button>
                   </div>
                 </div>
               
