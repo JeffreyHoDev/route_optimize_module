@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import CustomTableComponent from '../../components/table/customTable.component'
 import AddUserComponent from '../../components/user/addUser.component';
 
+import { Button } from '@mui/material';
 
 const UserManagementPage = () => {
 
@@ -15,6 +16,7 @@ const UserManagementPage = () => {
 
 
   const [ rows, setRows ] = useState([])
+  const [ addUserComponentShow, toogleAddUserComponent ] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:9999/getUsers")
@@ -27,13 +29,16 @@ const UserManagementPage = () => {
 
 
     return (
+      <>
         <div className="usermanagement-page-container">
-        <div className='background'></div>
             <h1>User Management Page</h1>
+            <Button variant="contained" color="primary" onClick={()=> toogleAddUserComponent(!addUserComponentShow)}>Add User</Button>
             {/* <TableComponent columns={columns} data={data}/> */}
             <CustomTableComponent columns={columns} rows={rows} />
-            <AddUserComponent />
         </div>
+        <AddUserComponent toogleAddUserComponent={toogleAddUserComponent} addUserComponentShow={addUserComponentShow}/>
+
+      </>
     )
 }
 
