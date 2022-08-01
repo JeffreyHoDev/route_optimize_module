@@ -1,0 +1,26 @@
+DB=routeoptimizationwithgoogle
+    TABLE
+        users
+            id
+            username
+            displayname
+            role
+            password
+            registerdate
+        passengers
+            id
+            passengername
+            relateduser
+            contactnumber
+            pickupaddress
+            postalcode
+            registerdate
+        vehicles
+            id
+            vehicleplate
+            fleet
+            registerdate
+        fleets 
+            id
+            fleetname
+            registerdate

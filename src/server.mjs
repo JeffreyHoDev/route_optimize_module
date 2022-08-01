@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cors())
 const port = 9999
 
-//pg version 14
+//pg version 14 
 const knexQ = knex({
   client: 'pg',
   connection: {
@@ -20,7 +20,7 @@ const knexQ = knex({
     port: 5432,
     user: "postgres",
     password: process.env.REACT_APP_dbpassword,
-    database: "routeOptimizationWithGoogle"
+    database: "routeoptimizationwithgoogle"
   },
   searchPath: ['knex', 'public'],
 });
@@ -58,7 +58,7 @@ app.get('/getFleets', (req,res) => {
 
 
 app.post('/addUser', (req, res) => {
-
+ 
   bcrypt.hash(req.body.password, salt, (err, encrypted) => {
     
     if(err){

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 import './addFleet.style.css'
 
-const AddFleetComponent = () => {
+const AddFleetComponent = ({ toogleAddFleetComponent, addFleetComponentShow }) => {
     const [ newFleetInformation, setNewFleetInformation ] = useState({
         "fleetname": "",
         "registerdate": ""
@@ -56,26 +56,31 @@ const AddFleetComponent = () => {
     }
 
     return (
-        <div className="add-fleet-component-container">
-            <h1>Add a Fleet</h1>
-            <Box
-                component="form"
-                sx={{
-                    '& > :not(style)': { m: 1.5, width: '25ch' },
-                }}
-                autoComplete="off"
-                onSubmit={submitHandler}
-            >
-                
-                <div className="add-fleet-input-detail" style={{marginBottom: ".5rem"}}>
-                    <TextField id="fleetname" label="Fleet Name" variant="outlined" name="fleetname" required size='small' onChange={inputsHandler}/>
-                </div>
-                <Button type="submit" disabled={buttonState} size="small" variant="contained" startIcon={<SaveIcon />} color="primary">Add Fleet</Button>
-            </Box>
-
-            
-
-        </div>        
+        <>
+            {
+                addFleetComponentShow ? 
+                <div className="add-fleet-component-container">
+                    <h1>Add a Fleet</h1>
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1.5, width: '25ch' },
+                        }}
+                        autoComplete="off"
+                        onSubmit={submitHandler}
+                    >
+                        
+                        <div className="add-fleet-input-detail" style={{marginBottom: ".5rem"}}>
+                            <TextField id="fleetname" label="Fleet Name" variant="outlined" name="fleetname" required size='small' onChange={inputsHandler}/>
+                        </div>
+                        <Button type="submit" disabled={buttonState} size="small" variant="contained" startIcon={<SaveIcon />} color="primary">Add Fleet</Button>
+                    </Box>
+                    <Button onClick={() => toogleAddFleetComponent(!addFleetComponentShow) } type="button" disabled={buttonState} variant="contained" color="secondary">Cancel</Button>
+                </div> 
+                : null
+            }
+       
+        </>
     )
 }
 

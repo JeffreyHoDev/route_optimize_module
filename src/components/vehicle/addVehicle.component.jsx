@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const AddVehicleComponent = () => {
+const AddVehicleComponent = ({addVehicleComponentShow, toogleAddVehicleComponent }) => {
     
     const [ newVehicleInformation, setNewVehicleInformation ] = useState({
         "vehicleplate": "",
@@ -72,6 +72,7 @@ const AddVehicleComponent = () => {
                 if(result === 0){
                     alert("Successfully Added")
                     toggleButtonState(false)
+                    toogleAddVehicleComponent(false)
 
                 }else {
                     alert(`(Error: ${result.code}) Failed To Add: ${result.detail}`)
@@ -83,36 +84,43 @@ const AddVehicleComponent = () => {
 
     const classes = useStyles()
     return (
-        <div className="add-vehicle-component-container">
-            <h1>Add a Vehicle</h1>
-            <Box
-                component="form"
-                sx={{
-                    '& > :not(style)': { m: 1.5, width: '25ch' },
-                }}
-                autoComplete="off"
-                onSubmit={submitHandler}
-            >
-                <div className='add-vehicle-details'>
-                    <FormControl className={classes.formControl}>
-                        <TextField id="filled-basic" label="Vehicle Plate" variant="filled" type='text' name="vehicleplate" onChange={inputsHandler}></TextField>
-                    </FormControl>
-                </div>
-                <div className='add-vehicle-details'>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel id="vehiclefleet">Vehicle Fleet: </InputLabel>
-                        <Select type='text' labelId="vehiclefleet" name="fleet" onChange={inputsHandler} value={newVehicleInformation.fleet}>
-                            {
-                                fleets.map(fleet => <MenuItem key={`fleet-${fleet.id}`} value={fleet.fleetname}>{fleet.fleetname}</MenuItem>)
-                            }
-                        </Select>
-                    </FormControl>
-                </div>
+        <>
+            {
+                addVehicleComponentShow ? 
+                <div className="add-vehicle-component-container">
+                    <h1>Add a Vehicle</h1>
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1.5, width: '25ch' },
+                        }}
+                        autoComplete="off"
+                        onSubmit={submitHandler}
+                    >
+                        <div className='add-vehicle-details'>
+                            <FormControl className={classes.formControl}>
+                                <TextField id="filled-basic" label="Vehicle Plate" variant="filled" type='text' name="vehicleplate" onChange={inputsHandler}></TextField>
+                            </FormControl>
+                        </div>
+                        <div className='add-vehicle-details'>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="vehiclefleet">Vehicle Fleet: </InputLabel>
+                                <Select type='text' labelId="vehiclefleet" name="fleet" onChange={inputsHandler} value={newVehicleInformation.fleet}>
+                                    {
+                                        fleets.map(fleet => <MenuItem key={`fleet-${fleet.id}`} value={fleet.fleetname}>{fleet.fleetname}</MenuItem>)
+                                    }
+                                </Select>
+                            </FormControl>
+                        </div>
 
-                <Button variant="contained" disabled={buttonState} color="primary" type="submit">Add</Button>
-            </Box>
-            
-        </div>        
+                        <Button variant="contained" disabled={buttonState} color="primary" type="submit">Add</Button>
+                    </Box>
+                    <Button onClick={() => toogleAddVehicleComponent(!addVehicleComponentShow) } type="button" disabled={buttonState} variant="contained" color="secondary">Cancel</Button>
+                </div>                 
+                : null
+            }
+       
+        </>
     )
 }
 

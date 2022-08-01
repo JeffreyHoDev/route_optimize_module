@@ -1,10 +1,14 @@
 import CustomTableComponent from '../../components/table/customTable.component'
 import { useState, useEffect } from 'react'
+import AddFleetComponent from '../../components/fleet/addFleet.component'
+
+import { Button } from '@mui/material';
 
 
 const FleetManagementPage = () => {
 
     const [ rows, setRows ] = useState([])
+    const [ addFleetComponentShow, toogleAddFleetComponent ] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:9999/getFleets")
@@ -24,13 +28,17 @@ const FleetManagementPage = () => {
 
 
     return (
-        <div className="fleet-management-page-container">
-            <h1>Fleet Management Page</h1>
-            {/* <TableComponent columns={columns} data={data}/> */}
-            <div className="custom-table-component">
-                <CustomTableComponent rows={rows} columns={columns}/>
+        <>
+            <div className="fleet-management-page-container">
+                <h1>Fleet Management Page</h1>
+                <Button variant="contained" color="primary" onClick={()=> toogleAddFleetComponent(!addFleetComponentShow)}>Add Fleet</Button>
+                {/* <TableComponent columns={columns} data={data}/> */}
+                <div className="custom-table-component">
+                    <CustomTableComponent rows={rows} columns={columns}/>
+                </div>
             </div>
-        </div>
+            <AddFleetComponent addFleetComponentShow={addFleetComponentShow} toogleAddFleetComponent={toogleAddFleetComponent}/>
+        </>
     )
 }
 
