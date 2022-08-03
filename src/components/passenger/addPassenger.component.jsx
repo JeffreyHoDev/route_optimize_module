@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const AddPassengerComponent = () => {
+const AddPassengerComponent = ({ addPassengerComponentShow, toogleAddPassengerComponent}) => {
     const classes = useStyles()
 
     const [ buttonState, toggleButtonState ] = useState(false)
@@ -91,50 +91,56 @@ const AddPassengerComponent = () => {
 
 
     return (
-    <div className="add-passenger-component-container">
-        <h1>Add a Passenger</h1>
-        <Box
-            component="form"
-            sx={{
-                '& > :not(style)': { m: 1.5, width: '25ch' },
-            }}
-            autoComplete="off"
-            onSubmit={submitHandler}
-        >
-            <div className="add-passenger-input-detail">
-                <TextField id="passengername" label="Passenger Name" variant="outlined" name="passengername" onChange={inputsHandler} />
-            </div>
-            <div className="add-passenger-input-detail">
-                <FormControl className={classes.formControl} fullWidth >
-                    <InputLabel id="relateduser-label">Related User</InputLabel>
-                    <Select
-                        labelId="relateduser-label" 
-                        id="relateduser" 
-                        label="Related User"
-                        name="relateduser" 
-                        onChange={inputsHandler} 
-                        value={newPassengerInformation.relateduser}
+        <>
+        {
+            !addPassengerComponentShow ? null :(
+                <div className="add-passenger-component-container">
+                    <h1>Add a Passenger</h1>
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1.5, width: '25ch' },
+                        }}
+                        autoComplete="off"
+                        onSubmit={submitHandler}
                     >
-                    {
-                        users.map(user => <MenuItem key={`username-${user.id}`} value={user.username}>{`${user.displayname} (${user.username})`}</MenuItem>)
-                    }
-                    </Select>
-                </FormControl>
-            </div>
-            <div className="add-passenger-input-detail">
-                <TextField id="contactnumber" label="Contact Number" variant="outlined" type="tel" name="contactnumber" onChange={inputsHandler}/>
-            </div>
-            <div className="add-passenger-input-detail">
-                <TextField id="pickupaddress" label="Pickup Address" variant="outlined" name="pickupaddress" onChange={inputsHandler} />
-            </div>
-            <div className="add-passenger-input-detail">
-                <TextField id="postalcode" label="Postal Code" variant="outlined" type="number" name="postalcode" onChange={inputsHandler} />
-            </div>
-            <Button variant="contained" disabled={buttonState} color="primary" type="submit">Add</Button>
+                        <div className="add-passenger-input-detail">
+                            <TextField id="passengername" label="Passenger Name" variant="outlined" name="passengername" onChange={inputsHandler} />
+                        </div>
+                        <div className="add-passenger-input-detail">
+                            <FormControl className={classes.formControl} fullWidth >
+                                <InputLabel id="relateduser-label">Related User</InputLabel>
+                                <Select
+                                    labelId="relateduser-label" 
+                                    id="relateduser" 
+                                    label="Related User"
+                                    name="relateduser" 
+                                    onChange={inputsHandler} 
+                                    value={newPassengerInformation.relateduser}
+                                >
+                                {
+                                    users.map(user => <MenuItem key={`username-${user.id}`} value={user.username}>{`${user.displayname} (${user.username})`}</MenuItem>)
+                                }
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div className="add-passenger-input-detail">
+                            <TextField id="contactnumber" label="Contact Number" variant="outlined" type="tel" name="contactnumber" onChange={inputsHandler}/>
+                        </div>
+                        <div className="add-passenger-input-detail">
+                            <TextField id="pickupaddress" label="Pickup Address" variant="outlined" name="pickupaddress" onChange={inputsHandler} />
+                        </div>
+                        <div className="add-passenger-input-detail">
+                            <TextField id="postalcode" label="Postal Code" variant="outlined" type="number" name="postalcode" onChange={inputsHandler} />
+                        </div>
+                        <Button variant="contained" disabled={buttonState} color="primary" type="submit">Add</Button>
 
-        </Box>
-        
-    </div>
+                    </Box>
+                    <Button onClick={() => toogleAddPassengerComponent(!addPassengerComponentShow) } type="button" disabled={buttonState} variant="contained" color="secondary">Cancel</Button>                    
+                </div>
+            )
+        }
+        </>
     )
 }
 

@@ -1,9 +1,13 @@
 import CustomTableComponent from "../../components/table/customTable.component";
 import { useEffect, useState } from 'react'
 
+import { Button } from '@mui/material';
+import AddPassengerComponent from '../../components/passenger/addPassenger.component'
+
 const PassengerManagementPage = () => {
 
-    const [ rows, setRows ] = useState([])
+  const [ addPassengerComponentShow, toogleAddPassengerComponent ] = useState(false)
+  const [ rows, setRows ] = useState([])
 
     useEffect(() => {
         fetch("http://localhost:9999/getPassengers")
@@ -24,13 +28,17 @@ const PassengerManagementPage = () => {
       ];
     
     return (
+      <>
         <div className="usermanagement-page-container">
             <h1>Passenger Management Page</h1>
+            <Button variant="contained" color="primary" onClick={()=> toogleAddPassengerComponent(!addPassengerComponentShow)}>Add User</Button>
             {/* <TableComponent columns={columns} data={data}/> */}
             <div className="custom-table-component">
                 <CustomTableComponent rows={rows} columns={columns}/>
             </div>
         </div>
+        <AddPassengerComponent addPassengerComponentShow={addPassengerComponentShow} toogleAddPassengerComponent={toogleAddPassengerComponent}/>
+      </>
     )
 }
 
